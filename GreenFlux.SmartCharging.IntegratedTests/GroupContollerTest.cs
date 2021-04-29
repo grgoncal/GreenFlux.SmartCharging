@@ -7,6 +7,7 @@ using GreenFlux.SmartCharging.Domain.Entities;
 using System;
 using System.Web.Http;
 using System.Web.Http.Results;
+using GreenFlux.SmartCharging.Domain.Repositories;
 
 namespace GreenFlux.SmartCharging.IntegratedTests
 {
@@ -16,17 +17,19 @@ namespace GreenFlux.SmartCharging.IntegratedTests
         private IMediator _mediator;
 
         [SetUp]
-        public void Setup() 
+        public void Setup()
         {
             _mediator = IoC.GetMediator();
             _groupController = new GroupController(_mediator);
+            _groupController.ControllerContext = IoC.SetControllerContext();
+            _groupController.Request.Scheme = "http";
         }
 
-        [Test] 
+        [Test]
         public void ShouldReturnAllGroupsWhenGetIsCalled()
         {
-            var actionResult =  _groupController.GetAllGroups();
-            
+            var actionResult = _groupController.GetAllGroups();
+
             var getResult = actionResult as OkObjectResult;
 
             Assert.AreEqual(200, getResult.StatusCode);
@@ -35,12 +38,24 @@ namespace GreenFlux.SmartCharging.IntegratedTests
         [Test]
         public void When_CreateGroup_Expect_GroupCreation()
         {
-            var newGroup = new CreateGroupCommand() { Group = new Group() { } }
-            var actionResult = _groupController.Create();
+            var guid = Guid.NewGuid().ToString();
+            var newGroup = new CreateGroupCommand() { Group = new Group() { Name = guid, CurrentCapacity = 100.123M } };
+           
+            var actionResult = _groupController.Create(newGroup);
 
-            var getResult = actionResult as OkObjectResult;
+            var getResult = actionResult as CreatedResult;
+            var getResultResponse = getResult.Value as GreenFlux.SmartCharging.Domain.Entities.Mediator.Base.Response;
+            var createdGroup = getResultResponse.Content as Group;
 
-            Assert.AreEqual(200, getResult.StatusCode);
+            Assert.AreNotEqual(0, createdGroup.Id);
+
+            DeleteCreatedGroup(createdGroup);
+        }
+
+        private void DeleteCreatedGroup(Group createdGroup)
+        {
+            var groupRepository = IoC.GetGroupRepository();
+            groupRepository.DeleteGroup(createdGroup);
         }
     }
 }

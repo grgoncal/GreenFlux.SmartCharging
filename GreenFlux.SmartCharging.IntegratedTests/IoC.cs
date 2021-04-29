@@ -1,8 +1,12 @@
 ﻿using GreenFlux.SmartCharging.Domain.Repositories;
 using GreenFlux.SmartCharging.Infrastructure.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -27,7 +31,16 @@ namespace GreenFlux.SmartCharging.IntegratedTests
             IoC.ServiceCollection.AddMediatR(typeof(IRequestHandler<,>));
             IoC.ServiceCollection.AddMediatR(typeof(INotificationHandler<>));
 
+            IoC.ServiceCollection.AddMvc();
+            IoC.ServiceCollection.AddControllers();
+
+            IoC.ServiceCollection.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            IoC.ServiceCollection.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
             IoC.ServiceCollection.AddScoped<IGroupRepository, GroupRepository>();
+            IoC.ServiceCollection.AddScoped<IConnectorRepository, ConnectorRepository>();
+            IoC.ServiceCollection.AddScoped<IChargeStationRepository, ChargeStationRepository>();
+
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                                                    .AddEnvironmentVariables().Build();
             IoC.ServiceCollection.AddSingleton<IConfiguration>(config);
@@ -43,6 +56,14 @@ namespace GreenFlux.SmartCharging.IntegratedTests
         public static IGroupRepository GetGroupRepository()
         {
             return ServiceProvider.GetService<IGroupRepository>();
+        }
+
+        public static ControllerContext SetControllerContext()
+        {
+            return new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
         }
     }
 }
