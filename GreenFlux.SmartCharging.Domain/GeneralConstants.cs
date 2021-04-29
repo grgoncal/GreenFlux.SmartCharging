@@ -6,6 +6,6 @@ namespace GreenFlux.SmartCharging.Domain
 {
     public static class GeneralConstants
     {
-        public const long MAX_CONNECTOR_NUMBER = 5;
+        public const long MAX_CONNECTOR_NUMBER = 5; 
     }
 }
