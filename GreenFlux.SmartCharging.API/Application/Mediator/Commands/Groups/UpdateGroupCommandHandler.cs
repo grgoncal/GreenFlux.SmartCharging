@@ -1,5 +1,5 @@
-﻿using GreenFlux.SmartChargin.API.Application.Mediator.Base;
-using GreenFlux.SmartChargin.API.Application.Mediator.Commands.Connectors;
+﻿using GreenFlux.SmartCharging.API.Application.Mediator.Base;
+using GreenFlux.SmartCharging.API.Application.Mediator.Commands.Connectors;
 using GreenFlux.SmartCharging.Domain.Repositories;
 using GreenFlux.SmartCharging.Domain.Validation;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GreenFlux.SmartChargin.API.Application.Mediator.Commands.Groups
+namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.Groups
 {
     public class UpdateGroupCommandHandler : AbstractRequesHandler<UpdateGroupCommand>
     {

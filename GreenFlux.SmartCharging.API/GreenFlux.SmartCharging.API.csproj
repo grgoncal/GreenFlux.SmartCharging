@@ -2,8 +2,8 @@
 	
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	<AssemblyName>GreenFlux.SmartChargin.API</AssemblyName>
-	<RootNamespace>GreenFlux.SmartChargin.API</RootNamespace>
+	<AssemblyName>GreenFlux.SmartCharging.API</AssemblyName>
+	<RootNamespace>GreenFlux.SmartCharging.API</RootNamespace>
 	<EnableDefaultContentItems>false</EnableDefaultContentItems>
 	<CodeAnalysisRuleSet>.sonarlint\greenflux.smartchargingcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>

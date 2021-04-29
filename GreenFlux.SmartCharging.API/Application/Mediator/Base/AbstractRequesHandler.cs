@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GreenFlux.SmartChargin.API.Application.Mediator.Base
+namespace GreenFlux.SmartCharging.API.Application.Mediator.Base
 {
     public abstract class AbstractRequesHandler<T> : IRequestHandler<T, Response>
         where T : IRequest<Response>

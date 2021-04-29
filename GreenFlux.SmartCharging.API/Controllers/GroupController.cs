@@ -1,4 +1,4 @@
-﻿using GreenFlux.SmartChargin.API.Application.Mediator.Commands.Groups;
+﻿using GreenFlux.SmartCharging.API.Application.Mediator.Commands.Groups;
 using GreenFlux.SmartCharging.Domain.Entities;
 using MediatR;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GreenFlux.SmartChargin.API.Controllers
+namespace GreenFlux.SmartCharging.API.Controllers
 {
     [Route("api/[controller]")]
     public class GroupController : Controller

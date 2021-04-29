@@ -1,4 +1,4 @@
-﻿using GreenFlux.SmartChargin.API.Application.Mediator.Base;
+﻿using GreenFlux.SmartCharging.API.Application.Mediator.Base;
 using GreenFlux.SmartCharging.Domain.Entities;
 using GreenFlux.SmartCharging.Domain.Repositories;
 using GreenFlux.SmartCharging.Domain.Validation;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GreenFlux.SmartChargin.API.Application.Mediator.Commands.ChargeStations
+namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.ChargeStations
 {
     public class CreateChargeStationCommandHandler : AbstractRequesHandler<CreateChargeStationCommand>
     {

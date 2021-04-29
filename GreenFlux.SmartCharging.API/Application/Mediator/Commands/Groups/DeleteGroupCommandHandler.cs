@@ -1,4 +1,4 @@
-﻿using GreenFlux.SmartChargin.API.Application.Mediator.Base;
+﻿using GreenFlux.SmartCharging.API.Application.Mediator.Base;
 using GreenFlux.SmartCharging.Domain.Repositories;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GreenFlux.SmartChargin.API.Application.Mediator.Commands.Groups
+namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.Groups
 {
     public class DeleteGroupCommandHandler : AbstractRequesHandler<DeleteGroupCommand>
     {

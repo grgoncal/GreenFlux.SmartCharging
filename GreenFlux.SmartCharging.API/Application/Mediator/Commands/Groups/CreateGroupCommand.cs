@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GreenFlux.SmartCharging.Domain.Entities;
 
-namespace GreenFlux.SmartChargin.API.Application.Mediator.Commands.Groups
+namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.Groups
 {
     public class CreateGroupCommand : IRequest<Response>
     {
