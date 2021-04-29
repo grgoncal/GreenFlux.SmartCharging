@@ -1,0 +1,12 @@
+{
+  "ServerUri": "http://localhost:9000/",
+  "Organization": null,
+  "ProjectKey": "GreenFlux.SmartCharging",
+  "ProjectName": "GreenFlux.SmartCharging",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AXkRrqh-ScmKRrw0HMfZ",
+      "ProfileTimestamp": "2021-04-27T04:55:29Z"
+    }
+  }
+}
