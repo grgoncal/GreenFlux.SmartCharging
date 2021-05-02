@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.API", ".\GreenFlux.SmartCharging.API\GreenFlux.SmartCharging.API.csproj", "{57B8FEBB-10B7-44D1-823D-CA58A4E2EFB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.API", "GreenFlux.SmartCharging.API\GreenFlux.SmartCharging.API.csproj", "{57B8FEBB-10B7-44D1-823D-CA58A4E2EFB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.Domain", ".\GreenFlux.SmartCharging.Domain\GreenFlux.SmartCharging.Domain.csproj", "{EFCEE7CE-9C31-4A1C-BF1A-8E16F5D86528}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.Domain", "GreenFlux.SmartCharging.Domain\GreenFlux.SmartCharging.Domain.csproj", "{EFCEE7CE-9C31-4A1C-BF1A-8E16F5D86528}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.Infrastructure", ".\GreenFlux.SmartCharging.Infrastructure\GreenFlux.SmartCharging.Infrastructure.csproj", "{0F644CA3-4988-476E-9AB3-F15F13363C5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.Infrastructure", "GreenFlux.SmartCharging.Infrastructure\GreenFlux.SmartCharging.Infrastructure.csproj", "{0F644CA3-4988-476E-9AB3-F15F13363C5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenFlux.SmartCharging.IntegratedTests", ".\GreenFlux.SmartCharging.IntegratedTests\GreenFlux.SmartCharging.IntegratedTests.csproj", "{9574EB54-DB6F-4C22-874E-9EB45E9D61B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenFlux.SmartCharging.IntegratedTests", "GreenFlux.SmartCharging.IntegratedTests\GreenFlux.SmartCharging.IntegratedTests.csproj", "{9574EB54-DB6F-4C22-874E-9EB45E9D61B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D15738CA-1F93-4D39-9F75-CD7A803CF14C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

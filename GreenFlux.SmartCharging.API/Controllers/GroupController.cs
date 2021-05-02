@@ -49,7 +49,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
         }
 
         [HttpPut("{id}/UpdateGroup")]
-        public IActionResult Update(long id, [FromBody]UpdateGroupCommand command)
+        public IActionResult Update([FromBody]UpdateGroupCommand command)
         {
             if (command == null)
                 return BadRequest();

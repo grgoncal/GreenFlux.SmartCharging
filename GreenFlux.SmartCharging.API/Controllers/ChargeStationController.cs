@@ -66,7 +66,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
         }
 
         [HttpPut("{id}/UpdateChargeStation")]
-        public IActionResult Update(long id, [FromBody] UpdateChargeStationCommand command)
+        public IActionResult Update([FromBody] UpdateChargeStationCommand command)
         {
             if (command == null)
                 return BadRequest();

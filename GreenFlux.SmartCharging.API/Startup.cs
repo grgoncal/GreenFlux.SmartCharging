@@ -11,11 +11,14 @@ namespace GreenFlux.SmartCharging
 {
     public class Startup
     {
-        public IConfiguration _configuration;
-
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-            _configuration.GetConfiguration(env);
+            var buider = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
+                                                  .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                                                  .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                                                  .AddEnvironmentVariables();
+
+           buider.Build();
         }
 
         public void ConfigureServices(IServiceCollection serviceCollection)
