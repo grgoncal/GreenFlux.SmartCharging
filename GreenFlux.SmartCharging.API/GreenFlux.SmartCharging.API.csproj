@@ -5,7 +5,7 @@
 	<AssemblyName>GreenFlux.SmartCharging.API</AssemblyName>
 	<RootNamespace>GreenFlux.SmartCharging.API</RootNamespace>
 	<EnableDefaultContentItems>false</EnableDefaultContentItems>
-	<CodeAnalysisRuleSet>.sonarlint\greenflux.smartchargingcsharp.ruleset</CodeAnalysisRuleSet>
+	<CodeAnalysisRuleSet>..\.sonarlint\greenflux.smartchargingcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include=".sonarlint\greenflux.smartcharging\CSharp\SonarLint.xml" />
+    <AdditionalFiles Include="..\.sonarlint\greenflux.smartcharging\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

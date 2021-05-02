@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - GreenFlux.SmartCharging Sonar way" ToolsVersion="16.0">
+  <Include Path="..\.sonarlint\greenflux.smartchargingcsharp.ruleset" Action="Default" />
+  <Include Path="..\greenflux.smartcharging.api\.sonarlint\greenflux.smartchargingcsharp.ruleset" Action="Default" />
+</RuleSet>

@@ -1,1 +1,0 @@
-C:\Users\Guilherme Rocha\source\repos\GreenFlux.SmartCharging\GreenFlux.SmartCharging.API\.sonarqube\out\0
