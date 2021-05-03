@@ -49,6 +49,8 @@ namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.Connectors
 
         private void RunValidations(Connector connector, bool isUpdate = false)
         {
+            ValidateFields(connector);
+
             var chargeStation = _chargeStationRepository.GetChargeStationById(connector.ChargeStationId);
             var chargeStationList = _chargeStationRepository.GetChargeStationListByGroupId(chargeStation.GroupId);
             var connectionList = _connectorRepository.GetConnectorsByChargeStationIds(chargeStationList);
@@ -58,6 +60,14 @@ namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.Connectors
                 ValidateChargeStationQuantity(connectionList, connector);
 
             ValidateGroupCapacity(group, connectionList, connector);
+        }
+
+        private void ValidateFields(Connector connector)
+        {
+            if (connector.ChargeStationId <= 0)
+                throw new RestException("Can't create/update a connector without a charge station");
+            if (connector.MaxCurrent <= 0)
+                throw new RestException("Can't create/update a connector with a max current equal/smaller than 0");
         }
 
         private void ValidateChargeStationQuantity(List<Connector> connectionList, Connector newConnector)
@@ -77,12 +87,33 @@ namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.Connectors
                 var freeCapacity = group.CurrentCapacity - existingConnectorsCurrent;
                 var requiredCapacity = newConnector.MaxCurrent - freeCapacity;
 
-                var freedCapacity = 0M;
-                var possibleRemovals = connectionList.OrderBy(c => c.MaxCurrent).TakeWhile(c => (freedCapacity = freedCapacity + c.MaxCurrent) <= requiredCapacity).ToList();
+                var possibleRemovals = GetPossibleRemovals(connectionList, newConnector, requiredCapacity);
                 var calculatedRemovals = possibleRemovals.Select(c => c.Id).ToList();
+
+                if (calculatedRemovals.Count == 0)
+                    throw new RestException($"Group capacity exceeded. No removal suggestion found.");
 
                 throw new RestException($"Group capacity exceeded. Suggested connectors to remove (id): {string.Join(",", calculatedRemovals)}");
             }
+        }
+
+        private List<Connector> GetPossibleRemovals(List<Connector> connectionList, Connector newConnector, decimal requiredCapacity)
+        {
+            var possibleRemovals = new List<Connector>();
+
+            var exactRemovals = connectionList.Where(c => c.MaxCurrent == newConnector.MaxCurrent);
+            possibleRemovals.AddRange(exactRemovals);
+
+            if (possibleRemovals.Sum(c => c.MaxCurrent) <= requiredCapacity)
+                foreach (var connector in connectionList.OrderByDescending(c => c.MaxCurrent).ToList())
+                {
+                    possibleRemovals.Add(connector);
+
+                    if (possibleRemovals.Sum(c => c.MaxCurrent) >= requiredCapacity)
+                        break;
+                }
+
+            return possibleRemovals;
         }
     }
 }

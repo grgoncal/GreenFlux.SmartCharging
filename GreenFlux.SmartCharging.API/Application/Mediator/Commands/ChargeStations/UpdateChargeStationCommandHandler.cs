@@ -21,7 +21,9 @@ namespace GreenFlux.SmartCharging.API.Application.Mediator.Commands.ChargeStatio
         {
             var chargeStation = request.ChargeStation;
 
-            _chargeStationRepository.UpdateChargeStation(chargeStation);
+            _chargeStationRepository.UpdateChargeStation
+                
+                (chargeStation);
 
             return new HandleResponse() { Content = chargeStation };
         }

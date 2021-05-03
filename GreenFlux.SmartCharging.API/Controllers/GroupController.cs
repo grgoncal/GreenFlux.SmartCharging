@@ -33,7 +33,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
         }
 
         [HttpPost("CreateGroup")]
-        public IActionResult Create([FromBody] CreateGroupCommand command)
+        public IActionResult Create([FromBody]CreateGroupCommand command)
         {
             if (command == null)
                 return BadRequest();
@@ -59,7 +59,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
             if (!string.IsNullOrEmpty(result.ErrorMessage))
                 return StatusCode(200, result);
 
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpDelete("{id}/DeleteGroup")]
@@ -76,7 +76,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
             if (!string.IsNullOrEmpty(result.ErrorMessage))
                 return StatusCode(200, result);
 
-            return StatusCode(422, group);
+            return StatusCode(422, result);
         }
     }
 }

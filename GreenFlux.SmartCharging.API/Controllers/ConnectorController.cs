@@ -59,7 +59,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
             if (!string.IsNullOrEmpty(result.ErrorMessage))
                 return StatusCode(200, result);
 
-            return NoContent();
+            return Ok(result);
         }
 
 
@@ -77,7 +77,7 @@ namespace GreenFlux.SmartCharging.API.Controllers
             if (!string.IsNullOrEmpty(result.ErrorMessage))
                 return StatusCode(200, result);
 
-            return StatusCode(422, connector);
+            return StatusCode(422, result);
         }
     }
 }           
