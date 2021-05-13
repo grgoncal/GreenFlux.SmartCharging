@@ -1,6 +1,6 @@
 // MySql stuff
 
-I Created a Schema called 'gf_smartcharging'. And in this schema:
+I Created a Schema called 'gf_smartcharging'. In this schema, set userid as 'root' and password as '123456'. Then run these queries:
 
 CREATE TABLE `charge-stations` (
   `Id` int NOT NULL AUTO_INCREMENT,
@@ -10,7 +10,7 @@ CREATE TABLE `charge-stations` (
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   KEY `FK_ChargeStations_GroupId_Groups_idx` (`GroupId`),
   CONSTRAINT `FK_ChargeStations_GroupId_Groups` FOREIGN KEY (`GroupId`) REFERENCES `groups` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `connectors` (
   `Id` int NOT NULL AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE `connectors` (
   UNIQUE KEY `Id_UNIQUE` (`Id`) /*!80000 INVISIBLE */,
   KEY `IX_Connectors_ChargeStationId` (`ChargeStationId`),
   CONSTRAINT `FK_Connectors_ChargeStationId_ChargeStation` FOREIGN KEY (`ChargeStationId`) REFERENCES `charge-stations` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `groups` (
   `Id` int NOT NULL AUTO_INCREMENT,
@@ -28,4 +28,4 @@ CREATE TABLE `groups` (
   `CurrentCapacity` decimal(65,30) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

@@ -14,12 +14,12 @@ namespace GreenFlux.SmartCharging.API.Application.Mediator.Base
     {
         internal abstract HandleResponse HandleIt(T request, CancellationToken cancellationToken);
 
-        public Task<Response> Handle(T request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(T request, CancellationToken cancellationToken)
         {
             var response = new Response();
 
             if (object.Equals(request, default(T)))
-                return Task.FromResult(response);
+                return await Task.FromResult(response);
 
             try
             {
@@ -37,7 +37,7 @@ namespace GreenFlux.SmartCharging.API.Application.Mediator.Base
                 // Can also implement other custom error handlers
             }
 
-            return Task.FromResult(response);
+            return response;
         }
 
         private void ParseResult(Response response, HandleResponse result)

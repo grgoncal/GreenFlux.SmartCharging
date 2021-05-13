@@ -1,3 +1,9 @@
+Run instructions:
+
+ - Download MySql and follow ./"MySql Tables.txt" instructions.
+ - Run and open https://localhost:5001/swagger
+
+
 In total I have spent:
 
  - 4 (16%~) hours setting up the environment (I did not have mysql, libraries and sonar installed)
