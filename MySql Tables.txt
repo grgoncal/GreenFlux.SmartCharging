@@ -1,4 +1,4 @@
-// MySql stuff
+// MySql stuff - update 1
 
 I Created a Schema called 'gf_smartcharging'. In this schema, set userid as 'root' and password as '123456'. Then run these queries:
 
